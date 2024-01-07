@@ -32,7 +32,7 @@ public class EventListener implements Listener {
             if(ms.getEnd()==Long.MAX_VALUE){
                 ChatUtils.messageTranslated(e.getPlayer(), "punish.muted.permanent");
             }else{
-                ChatUtils.messageTranslated(e.getPlayer(), "punish.muted", timeStamp);
+                ChatUtils.messageTranslated(e.getPlayer(), "punish.muted.temporally", timeStamp);
             }
             e.setCancelled(true);
         }

@@ -17,14 +17,14 @@ punish.banned: |-
   &c執行者: %2
   &c&m--------------------------------------------
 punish.command.unmuted: "&7[&aBean&cPunishment&7] &aミュートが解除されました。"
-punish.muted: "&7[&aBean&cPunishment&7] &cあなたはミュートされています! %1 に解除予定です。"
+punish.muted.temporally: "&7[&aBean&cPunishment&7] &cあなたはミュートされています! %1 に解除予定です。"
 punish.muted.permanent: "&7[&aBean&cPunishment&7] &cあなたは無期限ミュートされています!"
 punish.warned: "&7[&aBean&cPunishment&7] &c%4 によって %3 の理由で %1 が警告され %2 ポイントが削除されました。現在ポイントは %5 ポイントです。"
 punish.pardon.execute: "&7[&aBean&cPunishment&7] &a%2 の理由で %1 のbanを解除しました。"
 punish.kick.execute: "&7[&aBean&cPunishment&7] &c%2 の理由で %1 を切断しました。"
 punish.warn.execute: "&7[&aBean&cPunishment&7] &c%2 の理由で %1 を警告し、%3 ポイントを削除しました。"
 punish.ban.execute: "&7[&aBean&cPunishment&7] &c%4 の理由で %3 の間 %1(%2) をbanしました。"
-command.point.execute: "&7[&aBean&cPunishment&7] &a%2 は %1 ポイントを保持しています。"
+command.point.execute.other: "&7[&aBean&cPunishment&7] &a%2 は %1 ポイントを保持しています。"
 command.point.execute.self: "&7[&aBean&cPunishment&7] &aあなたは %1 ポイントを保持しています。"
 punish.mute.execute: "&7[&aBean&cPunishment&7] &c%3 の理由で %2 の間 %1 をミュートしました。"
 punish.unmute.execute: "&7[&aBean&cPunishment&7] &a%2 の理由で %1 のミュートを解除しました。"
