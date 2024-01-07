@@ -61,6 +61,9 @@ public class PunishmentManager {
     public BanStatus getBanStatus(OfflinePlayer p){
         return banMap.get(p.getUniqueId());
     }
+    public MuteStatus getMuteStatus(OfflinePlayer p){
+        return muteMap.get(p.getUniqueId());
+    }
     public List<OfflinePlayer> getBannedPlayers(){
         return banMap.keySet().stream()
                 .map(u->BeanPunishments.getInstance().getServer().getOfflinePlayer(u))
