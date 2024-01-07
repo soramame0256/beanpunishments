@@ -63,47 +63,51 @@ public class PunishmentManager {
     }
     public void warn(OfflinePlayer p, double point, String reason, CommandSender enforcer){
         double currentlyPoint = getPoint(p)-point;
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:beanpunishments.db");
-            PreparedStatement ps;
-            if(pointsMap.containsKey(p.getUniqueId())){
-                ps = conn.prepareStatement("update warning set point = ? where uuid = ?");
-            }else {
-                ps = conn.prepareStatement("insert into warning (point, uuid) values (?,?)");
+        new Thread(()->{
+            Connection conn;
+            try {
+                conn = DriverManager.getConnection("jdbc:sqlite:beanpunishments.db");
+                PreparedStatement ps;
+                if(pointsMap.containsKey(p.getUniqueId())){
+                    ps = conn.prepareStatement("update warning set point = ? where uuid = ?");
+                }else {
+                    ps = conn.prepareStatement("insert into warning (point, uuid) values (?,?)");
+                }
+                ps.setDouble(1,currentlyPoint);
+                ps.setString(2,p.getUniqueId().toString());
+                ps.executeUpdate();
+                ps.close();
+                conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-            ps.setDouble(1,currentlyPoint);
-            ps.setString(2,p.getUniqueId().toString());
-            ps.executeUpdate();
-            ps.close();
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        }).start();
+        pointsMap.put(p.getUniqueId(), currentlyPoint);
         ChatUtils.broadcastTranslated("punish.warned", p.getName(), String.valueOf(point), reason, enforcer.getName());
         if (Config.isLoggingOn())FileUtils.log(enforcer.getName() + " warned " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason + " and removed " + point + " points", Config.getLoggingFile());
     }
     public void ban(OfflinePlayer p, long time, String reason, CommandSender enforcer, boolean permanent){
         if(isBanned(p)) pardon(p,"update", enforcer.getName());
         long start = Instant.now().getEpochSecond();
-        long end = start+time;
-        if(permanent) end=Long.MAX_VALUE;
+        long end = permanent ? Long.MAX_VALUE : start+time;
         String uuidEnforcer = enforcer instanceof Player ? ((Player) enforcer).getUniqueId().toString() : "00000000-0000-0000-0000-000000000000";
-        Connection conn;
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:beanpunishments.db");
-            PreparedStatement ps = conn.prepareStatement("insert into ban (uuid, start, end, reason, enforcer) values (?,?,?,?,?)");
-            ps.setString(1,p.getUniqueId().toString());
-            ps.setLong(2,start);
-            ps.setLong(3,end);
-            ps.setString(4,reason);
-            ps.setString(5,uuidEnforcer);
-            ps.executeUpdate();
-            ps.close();
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        new Thread(()->{
+            try {
+                Connection conn;
+                conn = DriverManager.getConnection("jdbc:sqlite:beanpunishments.db");
+                PreparedStatement ps = conn.prepareStatement("insert into ban (uuid, start, end, reason, enforcer) values (?,?,?,?,?)");
+                ps.setString(1,p.getUniqueId().toString());
+                ps.setLong(2,start);
+                ps.setLong(3,end);
+                ps.setString(4,reason);
+                ps.setString(5,uuidEnforcer);
+                ps.executeUpdate();
+                ps.close();
+                conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
         if (Config.isLoggingOn())FileUtils.log(enforcer.getName() + " banned " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason + " for " + TimeUtils.getFormattedTime(time), Config.getLoggingFile());
         ChatUtils.broadcastTranslated("punish.ban.spoken",p.getName(),p.getUniqueId().toString(), TimeUtils.getFormattedTime(time),reason,enforcer.getName());
         banMap.put(p.getUniqueId(),new BanStatus(true,reason,start,end,permanent,UUID.fromString(uuidEnforcer)));
@@ -119,17 +123,19 @@ public class PunishmentManager {
     }
     public void pardon(OfflinePlayer p,String reason, String enforcer){
         if(banMap.containsKey(p.getUniqueId())){
-            Connection conn;
-            try {
-                conn = DriverManager.getConnection("jdbc:sqlite:beanpunishments.db");
-                PreparedStatement ps = conn.prepareStatement("delete from ban where uuid = ?");
-                ps.setString(1,p.getUniqueId().toString());
-                ps.executeUpdate();
-                ps.close();
-                conn.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            new Thread(()-> {
+                Connection conn;
+                try {
+                    conn = DriverManager.getConnection("jdbc:sqlite:beanpunishments.db");
+                    PreparedStatement ps = conn.prepareStatement("delete from ban where uuid = ?");
+                    ps.setString(1, p.getUniqueId().toString());
+                    ps.executeUpdate();
+                    ps.close();
+                    conn.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }).start();
             if (Config.isLoggingOn()) FileUtils.log(enforcer + " pardoned " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason, Config.getLoggingFile());
             banMap.remove(p.getUniqueId());
         }
