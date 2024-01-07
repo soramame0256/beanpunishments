@@ -2,8 +2,10 @@ package com.github.soramame0256.beanpunishments.command;
 
 
 import com.github.soramame0256.beanpunishments.BeanPunishments;
+import com.github.soramame0256.beanpunishments.util.TimeUtils;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +39,10 @@ public class PardonCmd extends CommandBase {
             }
         }
         String reason = reasonSb.toString().trim();
+        String locale = sender instanceof Player ? ((Player) sender).getLocale() : "en_us";
         if (BeanPunishments.getPunishmentManager().isBanned(getPlugin().getServer().getOfflinePlayer(args[0]))){
             BeanPunishments.getPunishmentManager().pardon(getPlugin().getServer().getOfflinePlayer(args[0]),reason,sender.getName());
+            sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.pardon.execute",args[0],reason));
         }
         return true;
     }

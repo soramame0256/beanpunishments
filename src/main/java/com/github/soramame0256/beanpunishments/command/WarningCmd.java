@@ -1,7 +1,9 @@
 package com.github.soramame0256.beanpunishments.command;
 
 import com.github.soramame0256.beanpunishments.BeanPunishments;
+import com.github.soramame0256.beanpunishments.util.ChatUtils;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class WarningCmd extends CommandBase {
     protected WarningCmd(String name) {
@@ -22,8 +24,9 @@ public class WarningCmd extends CommandBase {
             }
         }
         String reason = reasonSb.toString().trim();
-
         BeanPunishments.getPunishmentManager().warn(getPlugin().getServer().getOfflinePlayer(args[0]),Double.parseDouble(args[1]),reason,sender);
+        String locale = sender instanceof Player ? ((Player) sender).getLocale() : "en_us";
+        sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.warn.execute",args[0], reason, args[1]));
         return true;
     }
 }

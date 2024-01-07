@@ -35,6 +35,8 @@ public class KickCmd extends CommandBase {
             }
         }
         String reason = reasonSb.toString().trim();
+        String locale = sender instanceof Player ? ((Player) sender).getLocale() : "en_us";
+        if(getPlugin().getServer().getPlayer(args[0]).isOnline()) sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.kick.execute",args[0], reason));
         if(getPlugin().getServer().getPlayer(args[0]).isOnline()) BeanPunishments.getPunishmentManager().kick(getPlugin().getServer().getOfflinePlayer(args[0]),reason,sender);
         return true;
     }

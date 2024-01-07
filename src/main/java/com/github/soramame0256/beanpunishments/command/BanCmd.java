@@ -60,12 +60,14 @@ public class BanCmd extends CommandBase {
             }
         }
         String reason = reasonSb.toString().trim();
+        String locale = sender instanceof Player ? ((Player) sender).getLocale() : "en_us";
         if (!time.equalsIgnoreCase("permanent") && !TimeUtils.isTimeFormat(time)) return false;
         if (time.equalsIgnoreCase("permanent")){
             BeanPunishments.getPunishmentManager().ban(getPlugin().getServer().getOfflinePlayer(args[0]), 0, reason, sender,true);
         }else{
             BeanPunishments.getPunishmentManager().ban(getPlugin().getServer().getOfflinePlayer(args[0]),TimeUtils.getSecond(time),reason,sender,false);
         }
+        sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.ban.execute",args[0],getPlugin().getServer().getOfflinePlayer(args[0]).getUniqueId().toString(), TimeUtils.getFormattedTime(TimeUtils.getSecond(time)), reason));
         return true;
     }
 }
