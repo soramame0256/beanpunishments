@@ -40,7 +40,7 @@ public class PunishmentManager {
             }
             rs = statement.executeQuery("select * from mute");
             while(rs.next()){
-                muteMap.put(UUID.fromString(rs.getString("uuid")),new MuteStatus(rs.getString("reason"),rs.getLong("end"),rs.getLong("end")==Long.MAX_VALUE, UUID.fromString("enforcer")));
+                muteMap.put(UUID.fromString(rs.getString("uuid")),new MuteStatus(rs.getString("reason"),rs.getLong("end"),rs.getLong("end")==Long.MAX_VALUE, UUID.fromString(rs.getString("enforcer"))));
             }
             statement.close();
             conn.close();
