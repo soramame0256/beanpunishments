@@ -27,7 +27,11 @@ public final class BeanPunishments extends JavaPlugin {
         logger.log(Level.INFO,"First initialization completed!");
         logger.log(Level.INFO, "trying to register commands...");
         setupCommandMap();
-        int cm = registerCommands(new BanCmd(), new PardonCmd(), new KickCmd(), new WarningCmd(), new PointCmd());
+        int cm = registerCommands(
+                new BanCmd(), new PardonCmd(), new KickCmd(),
+                new WarningCmd(), new PointCmd(), new UnmuteCmd(),
+                new MuteCmd()
+        );
         logger.log(Level.INFO, "Successfully registered "+cm +" commands!");
         logger.log(Level.INFO, "Initializing subsystems...");
         config=new Config(this);
