@@ -10,7 +10,7 @@ public class PointCmd extends CommandBase{
     public PointCmd() {
         super("beanpoints");
         setUsage("/beanpoints");
-        setDescription("shows warning points");
+        setDescription("Shows warning points");
     }
 
     @Override
