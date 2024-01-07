@@ -25,6 +25,7 @@ public class I18n {
     public String translate(String locale, String key, String... args){
         FileConfiguration lang = langs.getOrDefault(locale, langs.get("en_us"));
         String base = lang.getString(key);
+        if(base ==null) return key;
         for(int i=1; i<=args.length; i++){
             base = base.replace("%"+i,args[i-1]);
         }
