@@ -1,0 +1,18 @@
+command.permission_denied: "&7[&aBean&cPunishment&7] &cThis command needs permission \"%1\""
+punish.ban.spoken: "&7[&aBean&cPunishment&7] &4%5 banned %1(%2) because of %4 for %3"
+punish.kicked: |-
+  &c&m----------------------------
+  &c&7[&aBean&cPunishment&7]
+  &cYou have been kicked from this server.
+  &cReason: %1
+  &cEnforcer: %2
+  &c&m----------------------------
+punish.banned: |-
+  &c&m----------------------------
+  &c&7[&aBean&cPunishment&7]
+  &cYou have been banned from this server.
+  &cReason: %1
+  &cEnds on: %3
+  &cEnforcer: %2
+  &c&m----------------------------
+punish.pardon.execute: "&7[&aBean&cPunishment&7] Unbanned %1 because of %2"

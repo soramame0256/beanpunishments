@@ -1,0 +1,18 @@
+command.permission_denied: "&7[&aBean&cPunishment&7] &cこのコマンドの実行には「%1」が必要です。"
+punish.ban.spoken: "&7[&aBean&cPunishment&7] &4%5 によって %4 の理由で %3 の間 %1(%2) がbanされました。"
+punish.kicked: |-
+  &c&m--------------------------------------------
+  &c&7[&aBean&cPunishment&7]
+  &cサーバーからキックされました。
+  &c理由: %1
+  &c執行者: %2
+  &c&m--------------------------------------------
+punish.banned: |-
+  &c&m--------------------------------------------
+  &c&7[&aBean&cPunishment&7]
+  &cサーバーからbanされました。
+  &c理由: %1
+  &c終了日時: %3
+  &c執行者: %2
+  &c&m--------------------------------------------
+punish.pardon.execute: "&7[&aBean&cPunishment&7] %2 の理由で %1 のbanを解除しました。"

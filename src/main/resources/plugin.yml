@@ -1,0 +1,4 @@
+name: BeanPunishments
+version: '${project.version}'
+main: com.github.soramame0256.beanpunishments.BeanPunishments
+authors: [ soramame_256 ]
