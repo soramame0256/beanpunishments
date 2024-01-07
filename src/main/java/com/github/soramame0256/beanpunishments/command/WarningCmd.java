@@ -1,5 +1,6 @@
 package com.github.soramame0256.beanpunishments.command;
 
+import com.github.soramame0256.beanpunishments.BeanPunishments;
 import org.bukkit.command.CommandSender;
 
 public class WarningCmd extends CommandBase {
@@ -22,6 +23,7 @@ public class WarningCmd extends CommandBase {
         }
         String reason = reasonSb.toString().trim();
 
+        BeanPunishments.getPunishmentManager().warn(getPlugin().getServer().getOfflinePlayer(args[0]),Double.parseDouble(args[1]),reason,sender);
         return true;
     }
 }

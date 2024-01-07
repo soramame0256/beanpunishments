@@ -15,4 +15,7 @@ punish.banned: |-
   &cEnds on: %3
   &cEnforcer: %2
   &c&m----------------------------
-punish.pardon.execute: "&7[&aBean&cPunishment&7] Unbanned %1 because of %2"
+punish.pardon.execute: "&7[&aBean&cPunishment&7] &aUnbanned %1 because of %2"
+punish.kick.execute: "&7[&aBean&cPunishment&7] &cKicked %1 because of %2"
+punish.warn.execute: "&7[&aBean&cPunishment&7] &cWarned %1 because of %2 and removed %3 points"
+punish.ban.execute: "&7[&aBean&cPunishment&7] &cBanned %1(%2) because of %4 for %3"

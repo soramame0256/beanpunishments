@@ -1,7 +1,7 @@
 package com.github.soramame0256.beanpunishments;
 
+import com.github.soramame0256.beanpunishments.util.ChatUtils;
 import com.github.soramame0256.beanpunishments.util.PlayerUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -16,9 +16,7 @@ public class EventListener implements Listener {
         if(pm.isBanned(e.getPlayer())){
             BanStatus bs = pm.getBanStatus(e.getPlayer());
             e.disallow(PlayerLoginEvent.Result.KICK_BANNED,
-                    ChatColor.translateAlternateColorCodes('&',
-                            BeanPunishments.getTranslator().translate(e.getPlayer().getLocale(),"punish.banned",bs.getReason(), PlayerUtils.getName(bs.getEnforcer()),Timestamp.from(Instant.ofEpochSecond(bs.getEnd())).toString())
-                    )
+                    ChatUtils.coloredTranslated(e.getPlayer(),"punish.banned",bs.getReason(), PlayerUtils.getName(bs.getEnforcer()),Timestamp.from(Instant.ofEpochSecond(bs.getEnd())).toString())
             );
         }
     }
