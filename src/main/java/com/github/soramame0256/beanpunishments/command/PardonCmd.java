@@ -14,7 +14,7 @@ public class PardonCmd extends CommandBase {
     public PardonCmd() {
         super("beanpardon");
         setPermission("beanpunishments.command.ban.remove");
-        setUsage("/beanpardon <player> (reason)");
+        setUsage("/beanpardon <player> [reason]");
         setDescription("Unbans banned player");
         setAliases(new ArrayList<String>(){{add("pardon");}});
     }

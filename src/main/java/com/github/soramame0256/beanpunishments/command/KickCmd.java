@@ -12,7 +12,7 @@ public class KickCmd extends CommandBase {
     public KickCmd() {
         super("beankick");
         setPermission("beanpunishments.command.kick");
-        setUsage("/beankick <player> (reason)");
+        setUsage("/beankick <player> [reason]");
         setDescription("kicks player");
         setAliases(new ArrayList<String>(){{add("kick");}});
     }

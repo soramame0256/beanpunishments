@@ -10,7 +10,7 @@ public class WarningCmd extends CommandBase {
     public WarningCmd() {
         super("beanwarning");
         setPermission("beanpunishments.command.warning");
-        setUsage("/beanwarning <player> <point> (reason)");
+        setUsage("/beanwarning <player> <point> [reason]");
         setDescription("Warns player");
         setAliases(new ArrayList<String>(){{add("warn");add("warning");}});
     }
