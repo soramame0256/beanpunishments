@@ -26,5 +26,5 @@ punish.warn.execute: "&7[&aBean&cPunishment&7] &cWarned %1 because of %2 and rem
 punish.ban.execute: "&7[&aBean&cPunishment&7] &cBanned %1(%2) because of %4 for %3."
 command.point.execute: "&7[&aBean&cPunishment&7] &a%2 have %1 Points."
 command.point.execute.self: "&7[&aBean&cPunishment&7] &aYou have %1 Points."
-punish.mute.execute: "&7[&aBean&cPunishment&7] &cMuted %1 because of %3 for %2"
+punish.mute.execute: "&7[&aBean&cPunishment&7] &cMuted %1 because of %2 for %3"
 punish.unmute.execute: "&7[&aBean&cPunishment&7] &aUnmuted %1 because of %2"
