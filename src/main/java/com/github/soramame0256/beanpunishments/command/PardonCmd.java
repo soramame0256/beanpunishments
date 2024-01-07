@@ -2,7 +2,6 @@ package com.github.soramame0256.beanpunishments.command;
 
 
 import com.github.soramame0256.beanpunishments.BeanPunishments;
-import com.github.soramame0256.beanpunishments.util.TimeUtils;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,6 +15,7 @@ public class PardonCmd extends CommandBase {
         super("beanpardon");
         setPermission("beanpunishments.command.ban.remove");
         setUsage("/beanpardon <player> (reason)");
+        setDescription("Unbans banned player");
         setAliases(new ArrayList<String>(){{add("pardon");}});
     }
     @Override

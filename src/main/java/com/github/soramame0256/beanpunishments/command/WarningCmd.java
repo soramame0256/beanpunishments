@@ -1,7 +1,6 @@
 package com.github.soramame0256.beanpunishments.command;
 
 import com.github.soramame0256.beanpunishments.BeanPunishments;
-import com.github.soramame0256.beanpunishments.util.ChatUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -12,6 +11,7 @@ public class WarningCmd extends CommandBase {
         super("beanwarning");
         setPermission("beanpunishments.command.warning");
         setUsage("/beanwarning <player> <point> (reason)");
+        setDescription("Warns player");
         setAliases(new ArrayList<String>(){{add("warn");add("warning");}});
     }
 

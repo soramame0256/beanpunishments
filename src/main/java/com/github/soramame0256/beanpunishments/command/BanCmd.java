@@ -15,6 +15,7 @@ public class BanCmd extends CommandBase {
         super("beanban");
         setPermission("beanpunishments.command.ban.add");
         setUsage("/beanban <player> (time=permanent) (reason)");
+        setDescription("Bans player");
         setAliases(new ArrayList<String>(){{add("ban");}});
     }
     @Override
