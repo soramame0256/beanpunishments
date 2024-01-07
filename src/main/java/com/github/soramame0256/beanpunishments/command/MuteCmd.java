@@ -68,7 +68,7 @@ public class MuteCmd extends CommandBase {
         }else{
             BeanPunishments.getPunishmentManager().mute(getPlugin().getServer().getOfflinePlayer(args[0]),reason,TimeUtils.getSecond(time),sender,false);
         }
-        sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.mute.execute",args[0],getPlugin().getServer().getOfflinePlayer(args[0]).getUniqueId().toString(), time.equalsIgnoreCase("permanent") ? "permanent" : TimeUtils.getFormattedTime(TimeUtils.getSecond(time)), reason));
+        sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.mute.execute",args[0], time.equalsIgnoreCase("permanent") ? "permanent" : TimeUtils.getFormattedTime(TimeUtils.getSecond(time)), reason));
         return true;
     }
 }
