@@ -1,5 +1,5 @@
-command.permission_denied: "&7[&aBean&cPunishment&7] &cThis command needs permission \"%1\""
-punish.ban.spoken: "&7[&aBean&cPunishment&7] &4%5 banned %1(%2) because of %4 for %3"
+command.permission_denied: "&7[&aBean&cPunishment&7] &cThis command needs permission \"%1\"."
+punish.ban.spoken: "&7[&aBean&cPunishment&7] &4%5 banned %1(%2) because of %4 for %3."
 punish.kicked: |-
   &c&m----------------------------
   &c&7[&aBean&cPunishment&7]
@@ -15,7 +15,10 @@ punish.banned: |-
   &cEnds on: %3
   &cEnforcer: %2
   &c&m----------------------------
-punish.pardon.execute: "&7[&aBean&cPunishment&7] &aUnbanned %1 because of %2"
-punish.kick.execute: "&7[&aBean&cPunishment&7] &cKicked %1 because of %2"
-punish.warn.execute: "&7[&aBean&cPunishment&7] &cWarned %1 because of %2 and removed %3 points"
-punish.ban.execute: "&7[&aBean&cPunishment&7] &cBanned %1(%2) because of %4 for %3"
+punish.warned: "&7[&aBean&cPunishment&7] &c%1 has been warned by %4 because of %3 and removed %2 points."
+punish.pardon.execute: "&7[&aBean&cPunishment&7] &aUnbanned %1 because of %2."
+punish.kick.execute: "&7[&aBean&cPunishment&7] &cKicked %1 because of %2."
+punish.warn.execute: "&7[&aBean&cPunishment&7] &cWarned %1 because of %2 and removed %3 points."
+punish.ban.execute: "&7[&aBean&cPunishment&7] &cBanned %1(%2) because of %4 for %3."
+command.point.execute: "&7[&aBean&cPunishment&7] &a%2 have %1 Points."
+command.point.execute.self: "&7[&aBean&cPunishment&7] &aYou have %1 Points."

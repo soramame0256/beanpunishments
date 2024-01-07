@@ -6,8 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class WarningCmd extends CommandBase {
-    protected WarningCmd(String name) {
-        super(name);
+    public WarningCmd() {
+        super("beanwarning");
         setPermission("beanpunishments.command.warning");
         setUsage("/beanwarning <player> <point> (reason)");
     }

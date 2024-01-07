@@ -80,6 +80,7 @@ public class PunishmentManager {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        ChatUtils.broadcastTranslated("punish.warned", p.getName(), String.valueOf(point), reason, enforcer.getName());
         if (Config.isLoggingOn())FileUtils.log(enforcer.getName() + " warned " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason + " and removed " + point + " points", Config.getLoggingFile());
     }
     public void ban(OfflinePlayer p, long time, String reason, CommandSender enforcer, boolean permanent){

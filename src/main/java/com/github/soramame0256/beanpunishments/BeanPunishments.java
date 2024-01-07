@@ -1,9 +1,6 @@
 package com.github.soramame0256.beanpunishments;
 
-import com.github.soramame0256.beanpunishments.command.BanCmd;
-import com.github.soramame0256.beanpunishments.command.CommandBase;
-import com.github.soramame0256.beanpunishments.command.KickCmd;
-import com.github.soramame0256.beanpunishments.command.PardonCmd;
+import com.github.soramame0256.beanpunishments.command.*;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,7 +27,7 @@ public final class BeanPunishments extends JavaPlugin {
         logger.log(Level.INFO,"First initialization completed!");
         logger.log(Level.INFO, "trying to register commands...");
         setupCommandMap();
-        int cm = registerCommands(new BanCmd(), new PardonCmd(), new KickCmd());
+        int cm = registerCommands(new BanCmd(), new PardonCmd(), new KickCmd(), new WarningCmd(), new PointCmd());
         logger.log(Level.INFO, "Successfully registered "+cm +" commands!");
         logger.log(Level.INFO, "Initializing subsystems...");
         config=new Config(this);

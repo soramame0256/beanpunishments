@@ -15,7 +15,10 @@ punish.banned: |-
   &c終了日時: %3
   &c執行者: %2
   &c&m--------------------------------------------
+punish.warned: "&7[&aBean&cPunishment&7] &c%4 によって %3 の理由で %1 が警告され %2 ポイントが削除されました。"
 punish.pardon.execute: "&7[&aBean&cPunishment&7] &a%2 の理由で %1 のbanを解除しました。"
 punish.kick.execute: "&7[&aBean&cPunishment&7] &c%2 の理由で %1 を切断しました。"
 punish.warn.execute: "&7[&aBean&cPunishment&7] &c%2 の理由で %1 を警告し、%3 ポイントを削除しました。"
 punish.ban.execute: "&7[&aBean&cPunishment&7] &c%4 の理由で %3 の間 %1(%2) をbanしました。"
+command.point.execute: "&7[&aBean&cPunishment&7] &a%2 は %1 ポイントを保持しています。"
+command.point.execute.self: "&7[&aBean&cPunishment&7] &aあなたは %1 ポイントを保持しています。"
