@@ -15,6 +15,7 @@ punish.banned: |-
   &cEnds on: %3
   &cEnforcer: %2
   &c&m----------------------------
+punish.muted: "&7[&aBean&cPunishment&7] &cYou are muted! "
 punish.warned: "&7[&aBean&cPunishment&7] &c%1 has been warned by %4 because of %3 and removed %2 points."
 punish.pardon.execute: "&7[&aBean&cPunishment&7] &aUnbanned %1 because of %2."
 punish.kick.execute: "&7[&aBean&cPunishment&7] &cKicked %1 because of %2."

@@ -25,6 +25,7 @@ public class TimeUtils {
     }
     public static String getFormattedTime(long l){
         StringBuilder sb = new StringBuilder();
+        long ll = l;
         if(l/60/60/24/365>=1) {
             sb.append(l/60/60/24/365)
               .append("year");
@@ -67,6 +68,6 @@ public class TimeUtils {
             sb.append(" ");
             l=0;
         }
-        return sb.toString().trim();
+        return ll>=999999999 ? "permanent" : sb.toString().trim();
     }
 }

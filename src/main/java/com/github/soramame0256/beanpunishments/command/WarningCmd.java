@@ -5,6 +5,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class WarningCmd extends CommandBase {
     public WarningCmd() {
@@ -15,6 +17,10 @@ public class WarningCmd extends CommandBase {
         setAliases(new ArrayList<String>(){{add("warn");add("warning");}});
     }
 
+    @Override
+    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
+        return args.length<=1 ? getPlugin().getServer().getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList()) : new ArrayList<>();
+    }
     @Override
     public boolean run(CommandSender sender, String commandLabel, String[] args) {
         if(args.length<2) return false;

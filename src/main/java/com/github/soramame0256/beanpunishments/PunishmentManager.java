@@ -31,6 +31,7 @@ public class PunishmentManager {
             statement.setQueryTimeout(30);
             statement.executeUpdate("create table if not exists ban (uuid text not null primary key, start integer, end integer, reason text, enforcer text)");
             statement.executeUpdate("create table if not exists warning (uuid text not null primary key, point real)");
+            statement.executeUpdate("create table if not exists mute (uuid text not null primary key, end integer, reason text, enforcer text)");
             ResultSet rs = statement.executeQuery("select * from ban");
             while(rs.next()){
                 banMap.put(UUID.fromString(rs.getString("uuid")),new BanStatus(inst.getEpochSecond()<rs.getLong("end"),rs.getString("reason"),rs.getLong("start"),rs.getLong("end"),rs.getLong("end")==Long.MAX_VALUE,UUID.fromString(rs.getString("enforcer"))));
@@ -108,14 +109,15 @@ public class PunishmentManager {
                 throw new RuntimeException(e);
             }
         }).start();
-        if (Config.isLoggingOn())FileUtils.log(enforcer.getName() + " banned " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason + " for " + TimeUtils.getFormattedTime(time), Config.getLoggingFile());
-        ChatUtils.broadcastTranslated("punish.ban.spoken",p.getName(),p.getUniqueId().toString(), TimeUtils.getFormattedTime(time),reason,enforcer.getName());
+        if (Config.isLoggingOn())FileUtils.log(enforcer.getName() + " banned " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason + " for " + (permanent ? "permanent" : TimeUtils.getFormattedTime(time)), Config.getLoggingFile());
+        ChatUtils.broadcastTranslated("punish.ban.spoken",p.getName(),p.getUniqueId().toString(), permanent ? "permanent" : TimeUtils.getFormattedTime(time),reason,enforcer.getName());
         banMap.put(p.getUniqueId(),new BanStatus(true,reason,start,end,permanent,UUID.fromString(uuidEnforcer)));
         if(p.isOnline()) kick(p, reason,enforcer);
     }
     public void kick(OfflinePlayer p, String reason, CommandSender enforcer){
+        String timeStamp = getBanStatus(p).getEnd() > 999999999 ? "permanent" : Timestamp.from(Instant.ofEpochSecond(getBanStatus(p).getEnd())).toString();
         if(p.isOnline() && isBanned(p)){
-            p.getPlayer().kickPlayer(ChatUtils.coloredTranslated(p.getPlayer(),"punish.banned",reason, enforcer.getName(), Timestamp.from(Instant.ofEpochSecond(getBanStatus(p).getEnd())).toString()));
+            p.getPlayer().kickPlayer(ChatUtils.coloredTranslated(p.getPlayer(),"punish.banned",reason, enforcer.getName(), timeStamp));
         }else if(p.isOnline()){
             if (Config.isLoggingOn()) FileUtils.log(enforcer.getName() + " kicked " + p.getName() + "(" + p.getUniqueId() + ") because of " + reason, Config.getLoggingFile());
             p.getPlayer().kickPlayer(ChatUtils.coloredTranslated(p.getPlayer(),"punish.kicked",reason, enforcer.getName()));

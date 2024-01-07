@@ -15,8 +15,9 @@ public class EventListener implements Listener {
         PunishmentManager pm=BeanPunishments.getPunishmentManager();
         if(pm.isBanned(e.getPlayer())){
             BanStatus bs = pm.getBanStatus(e.getPlayer());
+            String timeStamp = bs.getEnd() > 999999999 ? "permanent" : Timestamp.from(Instant.ofEpochSecond(bs.getEnd())).toString();
             e.disallow(PlayerLoginEvent.Result.KICK_BANNED,
-                    ChatUtils.coloredTranslated(e.getPlayer(),"punish.banned",bs.getReason(), PlayerUtils.getName(bs.getEnforcer()),Timestamp.from(Instant.ofEpochSecond(bs.getEnd())).toString())
+                    ChatUtils.coloredTranslated(e.getPlayer(),"punish.banned",bs.getReason(), PlayerUtils.getName(bs.getEnforcer()), timeStamp)
             );
         }
     }

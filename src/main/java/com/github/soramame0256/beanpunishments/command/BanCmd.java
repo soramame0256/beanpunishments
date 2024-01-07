@@ -69,7 +69,7 @@ public class BanCmd extends CommandBase {
         }else{
             BeanPunishments.getPunishmentManager().ban(getPlugin().getServer().getOfflinePlayer(args[0]),TimeUtils.getSecond(time),reason,sender,false);
         }
-        sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.ban.execute",args[0],getPlugin().getServer().getOfflinePlayer(args[0]).getUniqueId().toString(), TimeUtils.getFormattedTime(TimeUtils.getSecond(time)), reason));
+        sendMessage(sender, BeanPunishments.getTranslator().translate(locale,"punish.ban.execute",args[0],getPlugin().getServer().getOfflinePlayer(args[0]).getUniqueId().toString(), time.equalsIgnoreCase("permanent") ? "permanent" : TimeUtils.getFormattedTime(TimeUtils.getSecond(time)), reason));
         return true;
     }
 }
