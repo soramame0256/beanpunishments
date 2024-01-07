@@ -26,5 +26,5 @@ punish.warn.execute: "&7[&aBean&cPunishment&7] &c%2 の理由で %1 を警告し
 punish.ban.execute: "&7[&aBean&cPunishment&7] &c%4 の理由で %3 の間 %1(%2) をbanしました。"
 command.point.execute: "&7[&aBean&cPunishment&7] &a%2 は %1 ポイントを保持しています。"
 command.point.execute.self: "&7[&aBean&cPunishment&7] &aあなたは %1 ポイントを保持しています。"
-punish.mute.execute: "&7[&aBean&cPunishment&7] &c%2 の理由で %3 の間 %1 をミュートしました。"
+punish.mute.execute: "&7[&aBean&cPunishment&7] &c%3 の理由で %2 の間 %1 をミュートしました。"
 punish.unmute.execute: "&7[&aBean&cPunishment&7] &a%2 の理由で %1 のミュートを解除しました。"
