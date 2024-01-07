@@ -16,6 +16,7 @@ public class PardonCmd extends CommandBase {
         super("beanpardon");
         setPermission("beanpunishments.command.ban.remove");
         setUsage("/beanpardon <player> (reason)");
+        setAliases(new ArrayList<String>(){{add("pardon");}});
     }
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {

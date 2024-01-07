@@ -13,6 +13,7 @@ public class KickCmd extends CommandBase {
         super("beankick");
         setPermission("beanpunishments.command.kick");
         setUsage("/beankick <player> (reason)");
+        setAliases(new ArrayList<String>(){{add("kick");}});
     }
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
